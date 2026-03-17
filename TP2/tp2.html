@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Formulaire d'inscription</title>
+
+<style>
+body{
+    font-family: Arial, sans-serif;
+    background:#f4f4f4;
+    margin:0;
+    padding:20px;
+}
+
+form{
+    max-width:700px;
+    margin:auto;
+    background:white;
+    padding:25px;
+    border-radius:10px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.1);
+}
+
+h1{
+    text-align:center;
+}
+
+fieldset{
+    border:1px solid #ccc;
+    margin-bottom:20px;
+    padding:15px;
+    border-radius:8px;
+}
+
+legend{
+    font-weight:bold;
+}
+
+label{
+    display:block;
+    margin-top:10px;
+}
+
+input, select, textarea{
+    width:100%;
+    padding:8px;
+    margin-top:5px;
+    border-radius:5px;
+    border:1px solid #ccc;
+}
+
+.radio-group,
+.checkbox-group{
+    display:flex;
+    gap:15px;
+    margin-top:5px;
+}
+
+button{
+    background:#FAC400;
+    border:none;
+    padding:12px;
+    width:100%;
+    font-size:16px;
+    border-radius:6px;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#e6b800;
+}
+</style>
+</head>
+
+<body>
+
+<form>
+
+<h1>Inscription</h1>
+
+<!-- Informations personnelles -->
+<fieldset>
+<legend>Informations personnelles</legend>
+
+<label for="nom">Nom</label>
+<input type="text" id="nom" name="nom" required autocomplete="family-name"
+oninvalid="this.setCustomValidity('Veuillez entrer votre nom')"
+oninput="this.setCustomValidity('')">
+
+<label for="prenom">Prénom</label>
+<input type="text" id="prenom" name="prenom" required autocomplete="given-name"
+oninvalid="this.setCustomValidity('Veuillez entrer votre prénom')"
+oninput="this.setCustomValidity('')">
+
+<label for="email">Email</label>
+<input type="email" id="email" name="email" required autocomplete="email"
+oninvalid="this.setCustomValidity('Veuillez entrer un email valide')"
+oninput="this.setCustomValidity('')">
+
+<label for="telephone">Téléphone</label>
+<input type="tel" id="telephone" name="telephone"
+pattern="^(\+33|0)[1-9](\d{2}){4}$"
+placeholder="06XXXXXXXX"
+required autocomplete="tel"
+oninvalid="this.setCustomValidity('Numéro français invalide')"
+oninput="this.setCustomValidity('')">
+
+<label for="date">Date de naissance</label>
+<input type="date" id="date" name="date"
+max="2008-01-01"
+required
+oninvalid="this.setCustomValidity('Vous devez avoir au moins 18 ans')"
+oninput="this.setCustomValidity('')">
+
+</fieldset>
+
+<!-- Compte -->
+<fieldset>
+<legend>Informations du compte</legend>
+
+<label for="password">Mot de passe</label>
+<input type="password"
+id="password"
+name="password"
+required
+minlength="8"
+pattern="(?=.*[A-Z])(?=.*[0-9]).{8,}"
+autocomplete="new-password"
+oninvalid="this.setCustomValidity('Mot de passe : 8 caractères minimum, 1 majuscule et 1 chiffre')"
+oninput="this.setCustomValidity('')">
+
+<label for="confirm">Confirmer le mot de passe</label>
+<input type="password"
+id="confirm"
+name="confirm"
+required
+autocomplete="new-password">
+
+</fieldset>
+
+<!-- Pays -->
+<fieldset>
+<legend>Localisation</legend>
+
+<label for="pays">Pays</label>
+<input list="listePays" id="pays" name="pays" required>
+
+<datalist id="listePays">
+<option value="France">
+<option value="Maroc">
+<option value="Belgique">
+<option value="Canada">
+<option value="Suisse">
+</datalist>
+
+</fieldset>
+
+<!-- Genre -->
+<fieldset>
+<legend>Genre</legend>
+
+<div class="radio-group">
+<label><input type="radio" name="genre" value="homme" required> Homme</label>
+<label><input type="radio" name="genre" value="femme"> Femme</label>
+</div>
+
+</fieldset>
+
+<!-- Centres d'intérêt -->
+<fieldset>
+<legend>Centres d'intérêt</legend>
+
+<div class="checkbox-group">
+<label><input type="checkbox" name="interets" value="programmation"> Programmation</label>
+<label><input type="checkbox" name="interets" value="design"> Design</label>
+<label><input type="checkbox" name="interets" value="sport"> Sport</label>
+<label><input type="checkbox" name="interets" value="lecture"> Lecture</label>
+</div>
+
+</fieldset>
+
+<!-- Bio -->
+<fieldset>
+<legend>Biographie</legend>
+
+<textarea name="bio"
+maxlength="300"
+rows="4"
+placeholder="Parlez un peu de vous (300 caractères max)"></textarea>
+
+</fieldset>
+
+<!-- Photo -->
+<fieldset>
+<legend>Photo de profil</legend>
+
+<input type="file" name="photo" accept="image/*">
+
+</fieldset>
+
+<!-- CGU -->
+<label>
+<input type="checkbox" required>
+J'accepte les conditions générales d'utilisation
+</label>
+
+<br><br>
+
+<button type="submit">S'inscrire</button>
+
+</form>
+
+</body>
+</html>
